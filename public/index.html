@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaibhav Dobhal | Web Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="loader-screen" id="loaderScreen">
+    <div class="loader-box">
+      <span>&lt;init /&gt;</span>
+      <div class="loader-lines">
+        <span>const portfolio = createExperience();</span>
+        <span>await launch('Vaibhav Dobhal');</span>
+        <span>render('websites', 'neon');</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <header class="topbar">
+    <nav class="nav-container">
+      <a href="#home" class="logo">VD</a>
+      <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navbarLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section" id="home">
+      <canvas class="hero-canvas" id="heroCanvas"></canvas>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <span class="eyebrow">Hey, I’m Vaibhav</span>
+          <h1>Vaibhav Dobhal</h1>
+          <p class="typing-text">I am a <span id="typedText"></span><span class="cursor-blink">|</span></p>
+          <p class="hero-subtext">I build websites that get clients results.</p>
+          <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+          </div>
+        </div>
+
+        <div class="hero-floaters">
+          <div class="code-badge badge-1">&lt;div&gt;</div>
+          <div class="code-badge badge-2">const</div>
+          <div class="code-badge badge-3">&lt;/&gt;</div>
+          <div class="code-badge badge-4">function</div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span></span>
+        <p>Scroll</p>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="section-header">
+        <p class="section-label">About</p>
+        <h2>Modern craftsmanship for digital brands.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal-item">
+          <p class="section-intro">I'm Vaibhav Dobhal, a passionate web developer from India with expertise in building modern, fast, and beautiful websites for businesses and individuals.</p>
+          <p>My work combines polished UX, strong performance, and striking visuals. I create digital experiences that feel premium, convert visitors, and align with every brand's voice.</p>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span>01</span>
+              <p>Industry-focused websites</p>
+            </div>
+            <div class="stat-card">
+              <span>02</span>
+              <p>Fast deployments</p>
+            </div>
+            <div class="stat-card">
+              <span>03</span>
+              <p>Visual storytelling</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-panel reveal-item">
+          <div class="skill-ring" data-progress="95">
+            <div class="ring-label"><span>95%</span><p>HTML/CSS</p></div>
+          </div>
+          <div class="skill-ring" data-progress="85">
+            <div class="ring-label"><span>85%</span><p>JavaScript</p></div>
+          </div>
+          <div class="skill-ring" data-progress="80">
+            <div class="ring-label"><span>80%</span><p>React</p></div>
+          </div>
+          <div class="skill-ring" data-progress="75">
+            <div class="ring-label"><span>75%</span><p>Node.js</p></div>
+          </div>
+          <div class="skill-ring" data-progress="85">
+            <div class="ring-label"><span>85%</span><p>UI/UX</p></div>
+          </div>
+          <div class="skill-ring" data-progress="70">
+            <div class="ring-label"><span>70%</span><p>SEO</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="section-header">
+        <p class="section-label">Services</p>
+        <h2>High-end web services designed to grow your brand.</h2>
+      </div>
+      <div class="services-grid">
+        <article class="service-card reveal-item">
+          <div class="service-icon">&#128187;</div>
+          <h3>Website Design & Development</h3>
+          <p>Modern websites built to convert, using polished UI and technical best practices.</p>
+          <button class="service-link">Learn More</button>
+        </article>
+        <article class="service-card reveal-item">
+          <div class="service-icon">&#128722;</div>
+          <h3>E-Commerce Stores</h3>
+          <p>Beautiful product pages and secure checkout experiences for premium online stores.</p>
+          <button class="service-link">Learn More</button>
+        </article>
+        <article class="service-card reveal-item">
+          <div class="service-icon">&#128640;</div>
+          <h3>Landing Pages</h3>
+          <p>High-converting landing pages crafted for campaigns, launches, and lead generation.</p>
+          <button class="service-link">Learn More</button>
+        </article>
+        <article class="service-card reveal-item">
+          <div class="service-icon">&#128295;</div>
+          <h3>Website Redesign</h3>
+          <p>Refresh your digital identity with a sleek redesign that elevates every user interaction.</p>
+          <button class="service-link">Learn More</button>
+        </article>
+        <article class="service-card reveal-item">
+          <div class="service-icon">&#128202;</div>
+          <h3>SEO Optimization</h3>
+          <p>Improve visibility and performance with search-optimized frontend and content structure.</p>
+          <button class="service-link">Learn More</button>
+        </article>
+        <article class="service-card reveal-item">
+          <div class="service-icon">&#9881;&#65039;</div>
+          <h3>Website Maintenance</h3>
+          <p>Ongoing updates, performance tuning, and security monitoring for worry-free websites.</p>
+          <button class="service-link">Learn More</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section portfolio-section" id="portfolio">
+      <div class="section-header">
+        <p class="section-label">Portfolio</p>
+        <h2>Recent digital experiences built with premium polish.</h2>
+      </div>
+      <div class="portfolio-grid">
+        <article class="project-card reveal-item">
+          <div class="project-preview luxe"></div>
+          <div class="project-content">
+            <p class="project-category">E-Commerce</p>
+            <h3>LuxeStore</h3>
+            <p>Premium online storefront designed for seamless shopping and luxury presentation.</p>
+            <div class="tech-tags"><span>React</span><span>Stripe</span><span>Animations</span></div>
+            <div class="project-actions">
+              <a href="#" class="project-btn">Live Demo</a>
+              <a href="#" class="project-btn">View Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal-item">
+          <div class="project-preview medicare"></div>
+          <div class="project-content">
+            <p class="project-category">Healthcare</p>
+            <h3>MediCare Plus</h3>
+            <p>A calm, trustworthy hospital website designed to guide patients with clarity.</p>
+            <div class="tech-tags"><span>HTML</span><span>CSS</span><span>UX</span></div>
+            <div class="project-actions">
+              <a href="#" class="project-btn">Live Demo</a>
+              <a href="#" class="project-btn">View Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal-item">
+          <div class="project-preview techflow"></div>
+          <div class="project-content">
+            <p class="project-category">Agency</p>
+            <h3>TechFlow Agency</h3>
+            <p>Bold agency landing experience with high-energy visuals and clear service messaging.</p>
+            <div class="tech-tags"><span>UI</span><span>JS</span><span>Brand</span></div>
+            <div class="project-actions">
+              <a href="#" class="project-btn">Live Demo</a>
+              <a href="#" class="project-btn">View Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal-item">
+          <div class="project-preview foodiehub"></div>
+          <div class="project-content">
+            <p class="project-category">Restaurant</p>
+            <h3>FoodieHub</h3>
+            <p>An appetizing restaurant website with mouthwatering visual storytelling and menu focus.</p>
+            <div class="tech-tags"><span>CSS</span><span>JS</span><span>Brand</span></div>
+            <div class="project-actions">
+              <a href="#" class="project-btn">Live Demo</a>
+              <a href="#" class="project-btn">View Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section testimonials-section" id="testimonials">
+      <div class="section-header">
+        <p class="section-label">Testimonials</p>
+        <h2>Client feedback that reflects premium delivery.</h2>
+      </div>
+      <div class="testimonials-grid">
+        <article class="testimonial-card reveal-item">
+          <div class="avatar avatar-1">AD</div>
+          <div class="stars">★★★★★</div>
+          <p>Vaibhav delivered a stunning website with smooth interactions and fast performance. Customers love the new branding.</p>
+          <h4>Aditi Sharma</h4>
+          <span>Founder, Luxe Retail</span>
+        </article>
+        <article class="testimonial-card reveal-item">
+          <div class="avatar avatar-2">RK</div>
+          <div class="stars">★★★★★</div>
+          <p>Professional communication and a beautiful final website. The design elevated our healthcare service trust and conversions.</p>
+          <h4>Rohan Kapoor</h4>
+          <span>CEO, MediCare Clinic</span>
+        </article>
+        <article class="testimonial-card reveal-item">
+          <div class="avatar avatar-3">SN</div>
+          <div class="stars">★★★★★</div>
+          <p>Highly skilled and detail-focused. The new agency site is modern, premium, and exactly what our brand needed.</p>
+          <h4>Sana Nair</h4>
+          <span>Director, TechFlow Agency</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section pricing-section" id="pricing">
+      <div class="section-header">
+        <p class="section-label">Pricing</p>
+        <h2>Plans built for every stage of your business.</h2>
+      </div>
+      <div class="pricing-grid">
+        <article class="pricing-card reveal-item">
+          <p class="plan-name">Basic</p>
+          <h3>₹8,000</h3>
+          <p>Landing page, 3 pages, mobile responsive</p>
+          <ul>
+            <li>One captivating landing page</li>
+            <li>Responsive across devices</li>
+            <li>Fast delivery</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Choose Basic</a>
+        </article>
+        <article class="pricing-card reveal-item highlight">
+          <p class="plan-name">Standard</p>
+          <h3>₹18,000</h3>
+          <p>Full website, 8 pages, CMS, SEO</p>
+          <ul>
+            <li>Custom multi-page website</li>
+            <li>Content management setup</li>
+            <li>Search-friendly structure</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Choose Standard</a>
+        </article>
+        <article class="pricing-card reveal-item">
+          <p class="plan-name">Premium</p>
+          <h3>₹35,000</h3>
+          <p>Full stack, unlimited pages, backend, 1 year support</p>
+          <ul>
+            <li>Robust backend integration</li>
+            <li>Unlimited page creation</li>
+            <li>One year support</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Choose Premium</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="section-header">
+        <p class="section-label">Contact</p>
+        <h2>Let's make your next website unforgettable.</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal-item">
+          <h3>Contact Info</h3>
+          <p>Ready to collaborate? Reach out and let's create a digital experience that stands out.</p>
+          <div class="info-list">
+            <div><span>📞</span><p>+91 98765 43210</p></div>
+            <div><span>✉️</span><p>hello@vaibhavdobhal.com</p></div>
+            <div><span>📍</span><p>India</p></div>
+            <div><span>💬</span><p><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer">WhatsApp Message</a></p></div>
+          </div>
+        </div>
+        <form class="contact-form reveal-item" id="contactForm">
+          <div class="form-grid">
+            <label><span>Name</span><input type="text" name="name" placeholder="Your name" required /></label>
+            <label><span>Email</span><input type="email" name="email" placeholder="you@example.com" required /></label>
+            <label><span>Phone</span><input type="tel" name="phone" placeholder="+91 98765 43210" required /></label>
+            <label><span>Service Needed</span><input type="text" name="service" placeholder="E-Commerce, Landing Page, etc." required /></label>
+            <label><span>Budget</span><input type="text" name="budget" placeholder="₹8,000 - ₹35,000" required /></label>
+          </div>
+          <label class="full-width"><span>Message</span><textarea name="message" rows="5" placeholder="Tell me about your project" required></textarea></label>
+          <button type="submit" class="btn btn-secondary">Send Message</button>
+          <div class="form-feedback" id="formFeedback"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>© 2025 Vaibhav Dobhal. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="https://wa.me/919876543210" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
