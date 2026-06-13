@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000;
 }
 
 body {
@@ -26,8 +27,19 @@ body {
   background: radial-gradient(circle at top, rgba(0, 212, 255, 0.12), transparent 25%),
     radial-gradient(circle at 80% 15%, rgba(155, 48, 255, 0.12), transparent 20%),
     var(--bg);
+  background-color: #000;
   color: var(--text);
   overflow-x: hidden;
+  opacity: 0;
+}
+
+body.transitioning {
+  opacity: 0;
+}
+
+body, .topbar, .hero-section, .section, .footer, .project-card, .project-preview,
+.service-card, .testimonial-card, .pricing-card, .contact-info, .contact-form {
+  background-color: #000;
 }
 
 a {
@@ -51,7 +63,7 @@ textarea {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(18px);
-  background: rgba(5, 5, 9, 0.62);
+  background: rgba(5, 5, 9, 0.96);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -361,6 +373,7 @@ textarea {
 .section {
   padding: 5rem 0;
   position: relative;
+  background-color: #000;
 }
 
 .section-header {
@@ -540,12 +553,14 @@ textarea {
   border-radius: 28px;
   overflow: hidden;
   background: rgba(12, 16, 32, 0.88);
+  background-color: #000;
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
 }
 
 .project-card:hover {
-  transform: translateY(-10px) perspective(800px) rotateX(1deg) rotateY(2deg);
+  transform: translateY(-8px);
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
 }
 
@@ -553,12 +568,80 @@ textarea {
   position: relative;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  will-change: transform, opacity;
 }
 
 .project-preview.luxe { background: radial-gradient(circle at 30% 40%, rgba(0,212,255,0.24), transparent 20%), linear-gradient(180deg, #0d0f1d 0%, #0b0c14 100%); }
 .project-preview.medicare { background: radial-gradient(circle at 30% 30%, rgba(155,48,255,0.2), transparent 22%), linear-gradient(180deg, #090a13 0%, #0f1121 100%); }
 .project-preview.techflow { background: radial-gradient(circle at 35% 35%, rgba(0,212,255,0.18), transparent 18%), linear-gradient(180deg, #0c0d1a 0%, #100f1e 100%); }
 .project-preview.foodiehub { background: radial-gradient(circle at 25% 35%, rgba(155,48,255,0.2), transparent 18%), linear-gradient(180deg, #090a10 0%, #11101d 100%); }
+.project-preview img.project-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 14s ease;
+}
+.project-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.72));
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.project-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.project-preview-icons {
+  position: absolute;
+  inset: auto 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  z-index: 1;
+}
+.preview-icon {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  backdrop-filter: blur(12px);
+}
+.project-card:hover .project-preview-overlay {
+  opacity: 0.15;
+}
+.project-card:hover img.project-image {
+  transform: scale(1.05);
+}
+.project-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.featured-tag {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(0, 212, 255, 0.18);
+  color: var(--blue);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
 .project-content {
   padding: 1.8rem;
@@ -591,6 +674,17 @@ textarea {
 .project-btn:hover {
   transform: translateY(-2px);
   background: rgba(0, 212, 255, 0.1);
+}
+
+.project-preview-icons,
+.project-actions,
+.btn,
+.code-badge,
+.project-card,
+.service-card,
+.testimonial-card,
+.pricing-card {
+  will-change: transform, opacity;
 }
 
 .tech-tags {
@@ -750,6 +844,37 @@ textarea {
   color: var(--blue);
 }
 
+.info-list a.whatsapp-link {
+  color: #25D366;
+  transition: box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.info-list a.whatsapp-link:hover {
+  color: #25D366;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.35);
+}
+
+.btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.95s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .contact-form {
   padding: 2rem;
   border-radius: 28px;
@@ -863,6 +988,17 @@ textarea:focus {
 @media (max-width: 800px) {
   .nav-toggle {
     display: flex;
+  }
+  .service-card:hover,
+  .project-card:hover {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  .hero-floaters .code-badge {
+    animation: none;
+  }
+  .project-preview img.project-image {
+    transition: transform 8s ease;
   }
 
   .nav-links {

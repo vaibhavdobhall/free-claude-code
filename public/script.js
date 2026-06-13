@@ -10,6 +10,8 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section');
 const heroCanvas = document.getElementById('heroCanvas');
 
+emailjs.init('GYp5EMFCPFvkJRETf');
+
 let typedIndex = 0;
 let charIndex = 0;
 let deleting = false;
@@ -47,13 +49,18 @@ window.addEventListener('mousemove', (event) => {
 window.addEventListener('load', () => {
   setTimeout(() => {
     loaderScreen.classList.add('hidden');
+    document.documentElement.classList.remove('page-loading');
+    document.body.style.opacity = '1';
   }, 2000);
 });
+
+const submitButton = contactForm.querySelector('button[type="submit"]');
+const submitButtonText = submitButton.textContent;
 
 contactForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(contactForm);
-  const payload = {
+  const templateParams = {
     name: formData.get('name').trim(),
     email: formData.get('email').trim(),
     phone: formData.get('phone').trim(),
@@ -62,25 +69,21 @@ contactForm.addEventListener('submit', async (event) => {
     message: formData.get('message').trim(),
   };
 
-  formFeedback.textContent = 'Sending message...';
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<span class="button-spinner" aria-hidden="true"></span> Sending...';
+  formFeedback.textContent = '';
 
   try {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    const data = await response.json();
-    if (data.success) {
-      formFeedback.textContent = data.message;
-      contactForm.reset();
-      contactForm.classList.add('sent');
-      setTimeout(() => contactForm.classList.remove('sent'), 1400);
-    } else {
-      formFeedback.textContent = data.message || 'Submission failed. Please try again.';
-    }
+    await emailjs.send('service_9nznnmk', 'template_yzi1edj', templateParams);
+    formFeedback.textContent = "Message sent! I'll get back to you within 24 hours 🚀";
+    contactForm.reset();
+    contactForm.classList.add('sent');
+    setTimeout(() => contactForm.classList.remove('sent'), 1400);
   } catch (error) {
     formFeedback.textContent = 'Unable to send message. Please try again later.';
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = submitButtonText;
   }
 });
 
@@ -96,17 +99,21 @@ navLinks.forEach((link) => {
 
 const revealItems = document.querySelectorAll('.reveal-item');
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+  window.requestAnimationFrame(() => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
   });
 }, { threshold: 0.15 });
 
 revealItems.forEach((item) => observer.observe(item));
 
-window.addEventListener('scroll', () => {
+let scrollTicking = false;
+
+function updateActiveSection() {
   const scrollPos = window.scrollY + window.innerHeight / 2;
   sections.forEach((section) => {
     const rect = section.getBoundingClientRect();
@@ -117,6 +124,37 @@ window.addEventListener('scroll', () => {
       if (activeLink) activeLink.classList.add('active');
     }
   });
+  scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    scrollTicking = true;
+    requestAnimationFrame(updateActiveSection);
+  }
+});
+
+const internalLinks = document.querySelectorAll('a[href^="#"]');
+internalLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const targetId = link.getAttribute('href');
+    const targetEl = targetId && targetId.startsWith('#') ? document.querySelector(targetId) : null;
+    if (targetEl) {
+      event.preventDefault();
+      document.body.classList.add('transitioning');
+      setTimeout(() => {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+      setTimeout(() => {
+        document.body.classList.remove('transitioning');
+        window.location.hash = targetId;
+      }, 500);
+    }
+  });
+});
+
+window.addEventListener('beforeunload', () => {
+  document.body.classList.add('transitioning');
 });
 
 function createParticles() {
